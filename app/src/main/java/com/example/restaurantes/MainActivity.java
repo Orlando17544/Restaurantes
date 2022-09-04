@@ -8,37 +8,10 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String EXTRA_MEAL_1 = "com.example.restaurantes.MEAL_1";
-    public static final String EXTRA_MEAL_2 = "com.example.restaurantes.MEAL_2";
-    public static final String EXTRA_MEAL_3 = "com.example.restaurantes.MEAL_3";
-    public static final String EXTRA_MEAL_4 = "com.example.restaurantes.MEAL_4";
+    public static final String EXTRA_RESTAURANT = "com.example.restaurantes.RESTAURANT";
 
-    public static final String EXTRA_MEAL_PRICE_1 = "com.example.restaurantes.MEAL_PRICE_1";
-    public static final String EXTRA_MEAL_PRICE_2 = "com.example.restaurantes.MEAL_PRICE_2";
-    public static final String EXTRA_MEAL_PRICE_3 = "com.example.restaurantes.MEAL_PRICE_3";
-    public static final String EXTRA_MEAL_PRICE_4 = "com.example.restaurantes.MEAL_PRICE_4";
-
-    
-    public static final String EXTRA_BEVERAGE_1 = "com.example.restaurantes.BEVERAGE_1";
-    public static final String EXTRA_BEVERAGE_2 = "com.example.restaurantes.BEVERAGE_2";
-    public static final String EXTRA_BEVERAGE_3 = "com.example.restaurantes.BEVERAGE_3";
-    public static final String EXTRA_BEVERAGE_4 = "com.example.restaurantes.BEVERAGE_4";
-
-    public static final String EXTRA_BEVERAGE_PRICE_1 = "com.example.restaurantes.BEVERAGE_PRICE_1";
-    public static final String EXTRA_BEVERAGE_PRICE_2 = "com.example.restaurantes.BEVERAGE_PRICE_2";
-    public static final String EXTRA_BEVERAGE_PRICE_3 = "com.example.restaurantes.BEVERAGE_PRICE_3";
-    public static final String EXTRA_BEVERAGE_PRICE_4 = "com.example.restaurantes.BEVERAGE_PRICE_4";
-
-
-    public static final String EXTRA_COMPLEMENT_1 = "com.example.restaurantes.COMPLEMENT_1";
-    public static final String EXTRA_COMPLEMENT_2 = "com.example.restaurantes.COMPLEMENT_2";
-    public static final String EXTRA_COMPLEMENT_3 = "com.example.restaurantes.COMPLEMENT_3";
-    public static final String EXTRA_COMPLEMENT_4 = "com.example.restaurantes.COMPLEMENT_4";
-
-    public static final String EXTRA_COMPLEMENT_PRICE_1 = "com.example.restaurantes.COMPLEMENT_PRICE_1";
-    public static final String EXTRA_COMPLEMENT_PRICE_2 = "com.example.restaurantes.COMPLEMENT_PRICE_2";
-    public static final String EXTRA_COMPLEMENT_PRICE_3 = "com.example.restaurantes.COMPLEMENT_PRICE_3";
-    public static final String EXTRA_COMPLEMENT_PRICE_4 = "com.example.restaurantes.COMPLEMENT_PRICE_4";
+    private Restaurant restaurant;
+    private Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,33 +26,31 @@ public class MainActivity extends AppCompatActivity {
         restaurantATextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                menu = new Menu(
+                        new Meal[]{
+                                new Meal("Comida A", 233),
+                                new Meal("Comida B", 582),
+                                new Meal("Comida C", 582),
+                                new Meal("Comida D", 132)
+                        },
+                        new Beverage[]{
+                                new Beverage("Comida E", 816),
+                                new Beverage("Comida F", 318),
+                                new Beverage("Comida G", 592),
+                                new Beverage("Comida H", 285),
+                        },
+                        new Complement[]{
+                                new Complement("Comida I", 581),
+                                new Complement("Comida J", 671),
+                                new Complement("Comida K", 891),
+                                new Complement("Comida L", 931),
+                        }
+                );
+
+                restaurant = new Restaurant("Restaurante A", menu);
+
                 Intent intent = new Intent(getApplicationContext(), RestaurantActivity.class);
-                intent.putExtra(EXTRA_MEAL_1, "Comida A");
-                intent.putExtra(EXTRA_MEAL_2, "Comida B");
-                intent.putExtra(EXTRA_MEAL_3, "Comida C");
-                intent.putExtra(EXTRA_MEAL_4, "Comida D");
-                intent.putExtra(EXTRA_MEAL_PRICE_1, 100);
-                intent.putExtra(EXTRA_MEAL_PRICE_2, 200);
-                intent.putExtra(EXTRA_MEAL_PRICE_3, 300);
-                intent.putExtra(EXTRA_MEAL_PRICE_4, 400);
-
-                intent.putExtra(EXTRA_BEVERAGE_1, "Bebida A");
-                intent.putExtra(EXTRA_BEVERAGE_2, "Bebida B");
-                intent.putExtra(EXTRA_BEVERAGE_3, "Bebida C");
-                intent.putExtra(EXTRA_BEVERAGE_4, "Bebida D");
-                intent.putExtra(EXTRA_BEVERAGE_PRICE_1, 500);
-                intent.putExtra(EXTRA_BEVERAGE_PRICE_2, 600);
-                intent.putExtra(EXTRA_BEVERAGE_PRICE_3, 700);
-                intent.putExtra(EXTRA_BEVERAGE_PRICE_4, 800);
-
-                intent.putExtra(EXTRA_COMPLEMENT_1, "Complemento A");
-                intent.putExtra(EXTRA_COMPLEMENT_2, "Complemento B");
-                intent.putExtra(EXTRA_COMPLEMENT_3, "Complemento C");
-                intent.putExtra(EXTRA_COMPLEMENT_4, "Complemento D");
-                intent.putExtra(EXTRA_COMPLEMENT_PRICE_1, 900);
-                intent.putExtra(EXTRA_COMPLEMENT_PRICE_2, 1000);
-                intent.putExtra(EXTRA_COMPLEMENT_PRICE_3, 1100);
-                intent.putExtra(EXTRA_COMPLEMENT_PRICE_4, 1200);
+                intent.putExtra(EXTRA_RESTAURANT, restaurant);
                 startActivity(intent);
             }
         });
@@ -87,33 +58,31 @@ public class MainActivity extends AppCompatActivity {
         restaurantBTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                menu = new Menu(
+                        new Meal[]{
+                                new Meal("Comida A", 123),
+                                new Meal("Comida B", 258),
+                                new Meal("Comida C", 812),
+                                new Meal("Comida D", 491)
+                        },
+                        new Beverage[]{
+                                new Beverage("Comida E", 198),
+                                new Beverage("Comida F", 216),
+                                new Beverage("Comida G", 538),
+                                new Beverage("Comida H", 718),
+                        },
+                        new Complement[]{
+                                new Complement("Comida I", 918),
+                                new Complement("Comida J", 361),
+                                new Complement("Comida K", 381),
+                                new Complement("Comida L", 408),
+                        }
+                );
+
+                restaurant = new Restaurant("Restaurante B", menu);
+
                 Intent intent = new Intent(getApplicationContext(), RestaurantActivity.class);
-                intent.putExtra(EXTRA_MEAL_1, "Comida E");
-                intent.putExtra(EXTRA_MEAL_2, "Comida F");
-                intent.putExtra(EXTRA_MEAL_3, "Comida G");
-                intent.putExtra(EXTRA_MEAL_4, "Comida H");
-                intent.putExtra(EXTRA_MEAL_PRICE_1, 1300);
-                intent.putExtra(EXTRA_MEAL_PRICE_2, 1400);
-                intent.putExtra(EXTRA_MEAL_PRICE_3, 1500);
-                intent.putExtra(EXTRA_MEAL_PRICE_4, 1600);
-
-                intent.putExtra(EXTRA_BEVERAGE_1, "Bebida E");
-                intent.putExtra(EXTRA_BEVERAGE_2, "Bebida F");
-                intent.putExtra(EXTRA_BEVERAGE_3, "Bebida G");
-                intent.putExtra(EXTRA_BEVERAGE_4, "Bebida H");
-                intent.putExtra(EXTRA_BEVERAGE_PRICE_1, 1700);
-                intent.putExtra(EXTRA_BEVERAGE_PRICE_2, 1800);
-                intent.putExtra(EXTRA_BEVERAGE_PRICE_3, 1900);
-                intent.putExtra(EXTRA_BEVERAGE_PRICE_4, 2000);
-
-                intent.putExtra(EXTRA_COMPLEMENT_1, "Complemento E");
-                intent.putExtra(EXTRA_COMPLEMENT_2, "Complemento F");
-                intent.putExtra(EXTRA_COMPLEMENT_3, "Complemento G");
-                intent.putExtra(EXTRA_COMPLEMENT_4, "Complemento H");
-                intent.putExtra(EXTRA_COMPLEMENT_PRICE_1, 2100);
-                intent.putExtra(EXTRA_COMPLEMENT_PRICE_2, 2200);
-                intent.putExtra(EXTRA_COMPLEMENT_PRICE_3, 2300);
-                intent.putExtra(EXTRA_COMPLEMENT_PRICE_4, 2400);
+                intent.putExtra(EXTRA_RESTAURANT, restaurant);
                 startActivity(intent);
             }
         });
@@ -121,33 +90,31 @@ public class MainActivity extends AppCompatActivity {
         restaurantCTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                menu = new Menu(
+                        new Meal[]{
+                                new Meal("Comida A", 839),
+                                new Meal("Comida B", 182),
+                                new Meal("Comida C", 848),
+                                new Meal("Comida D", 188)
+                        },
+                        new Beverage[]{
+                                new Beverage("Comida E", 382),
+                                new Beverage("Comida F", 178),
+                                new Beverage("Comida G", 582),
+                                new Beverage("Comida H", 581),
+                        },
+                        new Complement[]{
+                                new Complement("Comida I", 578),
+                                new Complement("Comida J", 189),
+                                new Complement("Comida K", 183),
+                                new Complement("Comida L", 285),
+                        }
+                );
+
+                restaurant = new Restaurant("Restaurante C", menu);
+
                 Intent intent = new Intent(getApplicationContext(), RestaurantActivity.class);
-                intent.putExtra(EXTRA_MEAL_1, "Comida I");
-                intent.putExtra(EXTRA_MEAL_2, "Comida J");
-                intent.putExtra(EXTRA_MEAL_3, "Comida K");
-                intent.putExtra(EXTRA_MEAL_4, "Comida L");
-                intent.putExtra(EXTRA_MEAL_PRICE_1, 2500);
-                intent.putExtra(EXTRA_MEAL_PRICE_2, 2600);
-                intent.putExtra(EXTRA_MEAL_PRICE_3, 2700);
-                intent.putExtra(EXTRA_MEAL_PRICE_4, 2800);
-
-                intent.putExtra(EXTRA_BEVERAGE_1, "Bebida I");
-                intent.putExtra(EXTRA_BEVERAGE_2, "Bebida J");
-                intent.putExtra(EXTRA_BEVERAGE_3, "Bebida K");
-                intent.putExtra(EXTRA_BEVERAGE_4, "Bebida L");
-                intent.putExtra(EXTRA_BEVERAGE_PRICE_1, 2900);
-                intent.putExtra(EXTRA_BEVERAGE_PRICE_2, 3000);
-                intent.putExtra(EXTRA_BEVERAGE_PRICE_3, 3100);
-                intent.putExtra(EXTRA_BEVERAGE_PRICE_4, 3200);
-
-                intent.putExtra(EXTRA_COMPLEMENT_1, "Complemento I");
-                intent.putExtra(EXTRA_COMPLEMENT_2, "Complemento J");
-                intent.putExtra(EXTRA_COMPLEMENT_3, "Complemento K");
-                intent.putExtra(EXTRA_COMPLEMENT_4, "Complemento L");
-                intent.putExtra(EXTRA_COMPLEMENT_PRICE_1, 3300);
-                intent.putExtra(EXTRA_COMPLEMENT_PRICE_2, 3400);
-                intent.putExtra(EXTRA_COMPLEMENT_PRICE_3, 3500);
-                intent.putExtra(EXTRA_COMPLEMENT_PRICE_4, 3600);
+                intent.putExtra(EXTRA_RESTAURANT, restaurant);
                 startActivity(intent);
             }
         });
@@ -155,33 +122,31 @@ public class MainActivity extends AppCompatActivity {
         restaurantDTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                menu = new Menu(
+                        new Meal[]{
+                                new Meal("Comida A", 389),
+                                new Meal("Comida B", 289),
+                                new Meal("Comida C", 581),
+                                new Meal("Comida D", 418)
+                        },
+                        new Beverage[]{
+                                new Beverage("Comida E", 917),
+                                new Beverage("Comida F", 136),
+                                new Beverage("Comida G", 267),
+                                new Beverage("Comida H", 386),
+                        },
+                        new Complement[]{
+                                new Complement("Comida I", 839),
+                                new Complement("Comida J", 189),
+                                new Complement("Comida K", 289),
+                                new Complement("Comida L", 567),
+                        }
+                );
+
+                restaurant = new Restaurant("Restaurante D", menu);
+
                 Intent intent = new Intent(getApplicationContext(), RestaurantActivity.class);
-                intent.putExtra(EXTRA_MEAL_1, "Comida M");
-                intent.putExtra(EXTRA_MEAL_2, "Comida N");
-                intent.putExtra(EXTRA_MEAL_3, "Comida O");
-                intent.putExtra(EXTRA_MEAL_4, "Comida P");
-                intent.putExtra(EXTRA_MEAL_PRICE_1, 3700);
-                intent.putExtra(EXTRA_MEAL_PRICE_2, 3800);
-                intent.putExtra(EXTRA_MEAL_PRICE_3, 3900);
-                intent.putExtra(EXTRA_MEAL_PRICE_4, 4000);
-
-                intent.putExtra(EXTRA_BEVERAGE_1, "Bebida M");
-                intent.putExtra(EXTRA_BEVERAGE_2, "Bebida N");
-                intent.putExtra(EXTRA_BEVERAGE_3, "Bebida O");
-                intent.putExtra(EXTRA_BEVERAGE_4, "Bebida P");
-                intent.putExtra(EXTRA_BEVERAGE_PRICE_1, 4100);
-                intent.putExtra(EXTRA_BEVERAGE_PRICE_2, 4200);
-                intent.putExtra(EXTRA_BEVERAGE_PRICE_3, 4300);
-                intent.putExtra(EXTRA_BEVERAGE_PRICE_4, 4400);
-
-                intent.putExtra(EXTRA_COMPLEMENT_1, "Complemento M");
-                intent.putExtra(EXTRA_COMPLEMENT_2, "Complemento N");
-                intent.putExtra(EXTRA_COMPLEMENT_3, "Complemento O");
-                intent.putExtra(EXTRA_COMPLEMENT_4, "Complemento P");
-                intent.putExtra(EXTRA_COMPLEMENT_PRICE_1, 4500);
-                intent.putExtra(EXTRA_COMPLEMENT_PRICE_2, 4600);
-                intent.putExtra(EXTRA_COMPLEMENT_PRICE_3, 4700);
-                intent.putExtra(EXTRA_COMPLEMENT_PRICE_4, 4800);
+                intent.putExtra(EXTRA_RESTAURANT, restaurant);
                 startActivity(intent);
             }
         });

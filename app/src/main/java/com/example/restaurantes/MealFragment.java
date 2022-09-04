@@ -4,9 +4,11 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,10 +19,10 @@ public class MealFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String MEAL_OBJECT = "mealObject";
+    private static final String ARG_PARAM1 = "param1";
 
     // TODO: Rename and change types of parameters
-    private String meal;
+    private Parcelable[] mParam1;
 
     public MealFragment() {
         // Required empty public constructor
@@ -34,10 +36,10 @@ public class MealFragment extends Fragment {
      * @return A new instance of fragment MealFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MealFragment newInstance(String meal) {
+    public static MealFragment newInstance(Meal[] meals) {
         MealFragment fragment = new MealFragment();
         Bundle args = new Bundle();
-        args.putString(MEAL_OBJECT, meal);
+        args.putParcelableArray(ARG_PARAM1, meals);
         fragment.setArguments(args);
         return fragment;
     }
@@ -46,7 +48,7 @@ public class MealFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            meal = getArguments().getString(MEAL_OBJECT);
+            mParam1 = getArguments().getParcelableArray(ARG_PARAM1);
         }
     }
 
@@ -54,6 +56,21 @@ public class MealFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_meal, container, false);
+        View view = inflater.inflate(R.layout.fragment_meal, container, false);
+
+        int[] nameIds = new int[]{R.id.meal_name_1, R.id.meal_name_2, R.id.meal_name_3, R.id.meal_name_4};
+        int[] priceIds = new int[]{R.id.meal_price_1, R.id.meal_price_2, R.id.meal_price_3, R.id.meal_price_4};
+
+        for (int i = 0; i < mParam1.length; i++) {
+            Meal meal = (Meal) mParam1[i];
+
+            TextView mealName = view.findViewById(nameIds[i]);
+            TextView mealPrice = view.findViewById(priceIds[i]);
+
+            mealName.setText(meal.getName());
+            mealPrice.setText(String.valueOf(meal.getPrice()));
+        }
+        
+        return view;
     }
 }

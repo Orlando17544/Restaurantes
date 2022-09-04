@@ -4,9 +4,11 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,11 +20,9 @@ public class ComplementFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private Parcelable[] mParam1;
 
     public ComplementFragment() {
         // Required empty public constructor
@@ -33,15 +33,13 @@ public class ComplementFragment extends Fragment {
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment ComplementFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ComplementFragment newInstance(String param1, String param2) {
+    public static ComplementFragment newInstance(Complement[] complements) {
         ComplementFragment fragment = new ComplementFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putParcelableArray(ARG_PARAM1, complements);
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,8 +48,7 @@ public class ComplementFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mParam1 = getArguments().getParcelableArray(ARG_PARAM1);
         }
     }
 
@@ -59,6 +56,21 @@ public class ComplementFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_complement, container, false);
+        View view = inflater.inflate(R.layout.fragment_complement, container, false);
+
+        int[] nameIds = new int[]{R.id.complement_name_1, R.id.complement_name_2, R.id.complement_name_3, R.id.complement_name_4};
+        int[] priceIds = new int[]{R.id.complement_price_1, R.id.complement_price_2, R.id.complement_price_3, R.id.complement_price_4};
+
+        for (int i = 0; i < mParam1.length; i++) {
+            Complement complement = (Complement) mParam1[i];
+
+            TextView complementName = view.findViewById(nameIds[i]);
+            TextView complementPrice = view.findViewById(priceIds[i]);
+
+            complementName.setText(complement.getName());
+            complementPrice.setText(String.valueOf(complement.getPrice()));
+        }
+
+        return view;
     }
 }

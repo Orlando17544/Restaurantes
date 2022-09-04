@@ -10,15 +10,16 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 public class RestaurantActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant);
 
+        Restaurant restaurant = getIntent().getParcelableExtra(MainActivity.EXTRA_RESTAURANT);
+
         ViewPager2 viewPager2 = findViewById(R.id.viewPager2);
 
-        viewPager2.setAdapter(new MenuPagerAdapter(this, new Meal()));
+        viewPager2.setAdapter(new MenuPagerAdapter(this, restaurant.getMenu()));
 
         TabLayout tabLayout = findViewById(R.id.tabLayout);
 
