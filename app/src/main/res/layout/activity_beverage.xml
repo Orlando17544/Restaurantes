@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".BeverageActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_back_24dp"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:src="@drawable/beverage"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/beverage_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/beverage_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Descripción"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:paddingVertical="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempor porta ex, vel ullamcorper orci dapibus id. Donec sit amet bibendum mauris, eu sodales felis. Morbi eget varius sapien. Nam ultricies consequat enim sed pulvinar. Nunc sit amet consequat turpis, ut auctor quam. Suspendisse tristique varius metus quis cursus. Ut felis tortor, aliquet a velit ut, imperdiet vulputate erat. Ut porttitor est sed lacinia commodo.
+
+Donec eu lorem vitae augue viverra volutpat. In hac habitasse platea dictumst. Proin porta euismod magna nec vestibulum. Nullam ut ante eu risus sagittis sagittis id et mauris. Vivamus pharetra, nisl et consequat porttitor, tellus erat rutrum augue, in volutpat eros erat eu massa. Sed laoreet viverra risus, vel consequat augue varius sit amet. Proin felis mi, hendrerit quis venenatis viverra, tincidunt at erat. Maecenas in magna sed ligula efficitur viverra bibendum a mi.
+
+Vestibulum vitae magna vel purus feugiat elementum sed eu arcu. Donec non tortor posuere, euismod nibh eu, vestibulum eros. Vivamus interdum luctus mauris, ut pharetra ipsum. Curabitur nisl augue, suscipit sed metus ut, iaculis dapibus eros. Etiam magna dui, ultrices quis nibh quis, dictum vulputate ex. Pellentesque pellentesque, urna vitae maximus accumsan, tortor elit tincidunt enim, non porttitor ligula tortor ut nunc. Vivamus non ipsum mauris. Quisque tristique, mauris quis dignissim suscipit, metus massa posuere diam, vel suscipit enim nibh vitae dui.
+
+Mauris sit amet pretium orci. Vestibulum tempus nulla elit, ut vestibulum purus fermentum sit amet. Aenean ut tincidunt turpis. Integer rhoncus purus tincidunt risus volutpat, sit amet fermentum eros condimentum. Curabitur aliquam cursus orci, at pellentesque diam pulvinar sed. Etiam mollis volutpat dolor, ut molestie sapien malesuada ac. Donec eget bibendum libero. Phasellus laoreet, quam at sagittis efficitur, mauris ipsum tincidunt est, vel egestas tellus sapien et nibh. Praesent ultricies luctus viverra. Quisque efficitur vitae ex quis mattis. Aliquam tellus nulla, porttitor at urna nec, sollicitudin fringilla arcu. Proin semper dolor quis rutrum varius.
+
+Cras vitae ligula felis. Etiam sodales velit quis leo consequat vulputate. Quisque semper commodo dui. Sed euismod sodales nulla ut tincidunt. Ut eu felis turpis. Mauris sit amet dictum quam. Nulla porta turpis vel viverra pretium. Phasellus fermentum purus non lectus placerat, id fringilla nunc cursus. Quisque elementum dolor posuere, dictum lorem quis, malesuada tellus. Phasellus ultrices nunc risus, non sagittis dolor lobortis non. Suspendisse vitae dolor euismod, ullamcorper arcu in, dapibus sapien."
+        android:justificationMode="inter_word"/>
+
+</LinearLayout>

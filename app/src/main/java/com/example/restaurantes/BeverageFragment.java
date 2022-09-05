@@ -1,5 +1,6 @@
 package com.example.restaurantes;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,8 @@ import android.widget.TextView;
  * create an instance of this fragment.
  */
 public class BeverageFragment extends Fragment {
+
+    public static final String EXTRA_BEVERAGE = "com.example.restaurantes.EXTRA_BEVERAGE";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,7 +71,16 @@ public class BeverageFragment extends Fragment {
             TextView beveragePrice = view.findViewById(priceIds[i]);
 
             beverageName.setText(beverage.getName());
-            beveragePrice.setText(String.valueOf(beverage.getPrice()));
+            beveragePrice.setText("$ " + beverage.getPrice());
+
+            beverageName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), BeverageActivity.class);
+                    intent.putExtra(EXTRA_BEVERAGE, beverage);
+                    startActivity(intent);
+                }
+            });
         }
 
         return view;

@@ -1,11 +1,15 @@
 package com.example.restaurantes;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import com.google.android.material.appbar.MaterialToolbar;
 
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_RESTAURANT = "com.example.restaurantes.RESTAURANT";
@@ -17,6 +21,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        MaterialToolbar topAppBar = findViewById(R.id.topAppBar);
+
+        topAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.search:
+                        Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                        intent.putExtra(EXTRA_RESTAURANT, restaurant);
+                        startActivity(intent);
+                        return true;
+                }
+                return false;
+            }
+        });
 
         TextView restaurantATextView = findViewById(R.id.restaurant_A_text_view);
         TextView restaurantBTextView = findViewById(R.id.restaurant_B_text_view);
@@ -34,16 +54,16 @@ public class MainActivity extends AppCompatActivity {
                                 new Meal("Comida D", 132)
                         },
                         new Beverage[]{
-                                new Beverage("Comida E", 816),
-                                new Beverage("Comida F", 318),
-                                new Beverage("Comida G", 592),
-                                new Beverage("Comida H", 285),
+                                new Beverage("Bebida E", 816),
+                                new Beverage("Bebida F", 318),
+                                new Beverage("Bebida G", 592),
+                                new Beverage("Bebida H", 285),
                         },
                         new Complement[]{
-                                new Complement("Comida I", 581),
-                                new Complement("Comida J", 671),
-                                new Complement("Comida K", 891),
-                                new Complement("Comida L", 931),
+                                new Complement("Complemento I", 581),
+                                new Complement("Complemento J", 671),
+                                new Complement("Complemento K", 891),
+                                new Complement("Complemento L", 931),
                         }
                 );
 
@@ -66,16 +86,16 @@ public class MainActivity extends AppCompatActivity {
                                 new Meal("Comida D", 491)
                         },
                         new Beverage[]{
-                                new Beverage("Comida E", 198),
-                                new Beverage("Comida F", 216),
-                                new Beverage("Comida G", 538),
-                                new Beverage("Comida H", 718),
+                                new Beverage("Bebida E", 198),
+                                new Beverage("Bebida F", 216),
+                                new Beverage("Bebida G", 538),
+                                new Beverage("Bebida H", 718),
                         },
                         new Complement[]{
-                                new Complement("Comida I", 918),
-                                new Complement("Comida J", 361),
-                                new Complement("Comida K", 381),
-                                new Complement("Comida L", 408),
+                                new Complement("Complemento I", 918),
+                                new Complement("Complemento J", 361),
+                                new Complement("Complemento K", 381),
+                                new Complement("Complemento L", 408),
                         }
                 );
 
@@ -98,16 +118,16 @@ public class MainActivity extends AppCompatActivity {
                                 new Meal("Comida D", 188)
                         },
                         new Beverage[]{
-                                new Beverage("Comida E", 382),
-                                new Beverage("Comida F", 178),
-                                new Beverage("Comida G", 582),
-                                new Beverage("Comida H", 581),
+                                new Beverage("Bebida E", 382),
+                                new Beverage("Bebida F", 178),
+                                new Beverage("Bebida G", 582),
+                                new Beverage("Bebida H", 581),
                         },
                         new Complement[]{
-                                new Complement("Comida I", 578),
-                                new Complement("Comida J", 189),
-                                new Complement("Comida K", 183),
-                                new Complement("Comida L", 285),
+                                new Complement("Complemento I", 578),
+                                new Complement("Complemento J", 189),
+                                new Complement("Complemento K", 183),
+                                new Complement("Complemento L", 285),
                         }
                 );
 
@@ -130,16 +150,16 @@ public class MainActivity extends AppCompatActivity {
                                 new Meal("Comida D", 418)
                         },
                         new Beverage[]{
-                                new Beverage("Comida E", 917),
-                                new Beverage("Comida F", 136),
-                                new Beverage("Comida G", 267),
-                                new Beverage("Comida H", 386),
+                                new Beverage("Beverage E", 917),
+                                new Beverage("Beverage F", 136),
+                                new Beverage("Beverage G", 267),
+                                new Beverage("Beverage H", 386),
                         },
                         new Complement[]{
-                                new Complement("Comida I", 839),
-                                new Complement("Comida J", 189),
-                                new Complement("Comida K", 289),
-                                new Complement("Comida L", 567),
+                                new Complement("Complemento I", 839),
+                                new Complement("Complemento J", 189),
+                                new Complement("Complemento K", 289),
+                                new Complement("Complemento L", 567),
                         }
                 );
 
