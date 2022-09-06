@@ -83,8 +83,6 @@ public class MealFragment extends Fragment {
             });
         }
 
-
-        
         return view;
     }
 }

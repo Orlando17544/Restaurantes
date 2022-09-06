@@ -3,9 +3,7 @@ package com.example.restaurantes;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.lifecycle.ComputableLiveData;
-
-public class Complement implements Parcelable {
+public class Complement implements ItemMenu {
     private String name;
     private int price;
 
@@ -19,6 +17,16 @@ public class Complement implements Parcelable {
         price = in.readInt();
     }
 
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getPrice() {
+        return price;
+    }
+
     public static final Creator<Complement> CREATOR = new Creator<Complement>() {
         @Override
         public Complement createFromParcel(Parcel in) {
@@ -30,14 +38,6 @@ public class Complement implements Parcelable {
             return new Complement[size];
         }
     };
-
-    public String getName() {
-        return name;
-    }
-
-    public int getPrice() {
-        return price;
-    }
 
     @Override
     public int describeContents() {

@@ -28,6 +28,7 @@
         app:startIconDrawable="@drawable/ic_search_24dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/searchEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -35,13 +36,8 @@
 
     <LinearLayout
         android:id="@+id/linear_layout"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
 
 </LinearLayout>

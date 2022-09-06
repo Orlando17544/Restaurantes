@@ -3,8 +3,6 @@ package com.example.restaurantes;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
-
 public class Menu implements Parcelable {
     private Meal[] meals;
     private Beverage[] beverages;
@@ -44,6 +42,30 @@ public class Menu implements Parcelable {
 
     public Complement[] getComplements() {
         return complements;
+    }
+
+    public ItemMenu[] getItems() {
+        int sizeItems = meals.length + beverages.length + complements.length;
+
+        ItemMenu[] items = new ItemMenu[sizeItems];
+
+        int j = 0;
+        for (int i = 0; i < meals.length; i++) {
+            items[j] = meals[i];
+            j++;
+        }
+
+        for (int i = 0; i < beverages.length; i++) {
+            items[j] = beverages[i];
+            j++;
+        }
+
+        for (int i = 0; i < complements.length; i++) {
+            items[j] = complements[i];
+            j++;
+        }
+
+        return items;
     }
 
     @Override

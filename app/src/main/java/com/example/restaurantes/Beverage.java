@@ -3,7 +3,7 @@ package com.example.restaurantes;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Beverage implements Parcelable {
+public class Beverage implements ItemMenu {
     private String name;
     private int price;
 
@@ -29,10 +29,12 @@ public class Beverage implements Parcelable {
         }
     };
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public int getPrice() {
         return price;
     }
